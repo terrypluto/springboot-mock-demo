@@ -1,6 +1,5 @@
-package com.terryliu.springbootmockdemo.controller;
+package com.terryliu.springbootmockdemo.controller.test;
 
-import com.terryliu.springbootmockdemo.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,26 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Copyright (C), 2022 ~ 2023, NyquistAi.inc
- * todo
+ * <p>todo</p>
  *
  * @author Nyquist Data Tech Team
  * @version 1.0.0
- * @since 2024/4/19
+ * @since 2024/5/16
  */
 @RestController
-@RequestMapping("user")
+@RequestMapping("test")
 @AllArgsConstructor
-public class UserController {
-    private final UserService userService;
+public class TestController {
     @PostMapping("create")
     public ResponseEntity<Integer> createUser() {
         throw new RuntimeException();
 //        return ResponseEntity.ok(userService.create());
-    }
-
-    @PostMapping("download")
-    public void download(){
-        userService.download();
     }
 }
