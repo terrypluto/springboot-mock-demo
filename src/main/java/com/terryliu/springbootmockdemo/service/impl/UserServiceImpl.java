@@ -1,5 +1,6 @@
 package com.terryliu.springbootmockdemo.service.impl;
 
+import com.terryliu.springbootmockdemo.annotation.UserLog;
 import com.terryliu.springbootmockdemo.mapper.UserBase;
 import com.terryliu.springbootmockdemo.mapper.UserBaseMapper;
 import com.terryliu.springbootmockdemo.service.FakeService;
@@ -47,6 +48,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+//    @UserLog
     public Integer get(){
         RandomGenerator randomGenerator = RandomGenerator.getDefault();
         return fakeService.add(randomGenerator.nextInt(100),randomGenerator.nextInt(100));
