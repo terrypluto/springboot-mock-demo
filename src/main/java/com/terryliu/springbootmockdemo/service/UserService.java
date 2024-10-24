@@ -1,6 +1,9 @@
 package com.terryliu.springbootmockdemo.service;
 
 import com.terryliu.springbootmockdemo.annotation.UserLog;
+import com.terryliu.springbootmockdemo.mapper.UserBase;
+
+import java.util.List;
 
 /**
  * Copyright (C), 2022 ~ 2023, NyquistAi.inc
@@ -10,7 +13,7 @@ import com.terryliu.springbootmockdemo.annotation.UserLog;
  * @version 1.0.0
  * @since 2024/4/19
  */
-public interface UserService {
+public interface UserService  {
     Integer create();
     @UserLog
     Integer get();
@@ -18,4 +21,5 @@ public interface UserService {
     void download();
 
 
+    void batch(List<UserBase> userBases);
 }

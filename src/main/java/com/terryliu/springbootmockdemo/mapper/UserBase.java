@@ -3,7 +3,11 @@ package com.terryliu.springbootmockdemo.mapper;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 /**
  * Copyright (C), 2022 ~ 2023, NyquistAi.inc
@@ -15,6 +19,9 @@ import lombok.Data;
  */
 @Data
 @TableName("user_base")
+@Accessors(chain = true)
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserBase {
     @TableId(type = IdType.AUTO)
     private Integer id;

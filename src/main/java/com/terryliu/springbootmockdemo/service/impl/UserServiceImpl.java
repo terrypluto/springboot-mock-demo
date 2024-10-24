@@ -1,5 +1,6 @@
 package com.terryliu.springbootmockdemo.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.terryliu.springbootmockdemo.annotation.UserLog;
 import com.terryliu.springbootmockdemo.mapper.UserBase;
 import com.terryliu.springbootmockdemo.mapper.UserBaseMapper;
@@ -12,12 +13,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.random.RandomGenerator;
 
 /**
@@ -31,7 +34,7 @@ import java.util.random.RandomGenerator;
 @Slf4j
 @Service
 @AllArgsConstructor
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserBaseMapper, UserBase> implements UserService {
     private static final String[] GENDERS = {"male", "female"};
     private final UserBaseMapper userBaseMapper;
     private final FakeService fakeService;
@@ -68,6 +71,12 @@ public class UserServiceImpl implements UserService {
 
 
 
+    }
+
+    @Override
+    @Transactional
+    public void batch(List<UserBase> userBases) {
+        saveBatch(userBases);
     }
 
     private static void setRespHeader(HttpServletResponse response, String fileName, String contentType) {
