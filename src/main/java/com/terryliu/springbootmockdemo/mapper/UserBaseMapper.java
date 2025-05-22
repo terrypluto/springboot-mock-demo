@@ -1,9 +1,7 @@
 package com.terryliu.springbootmockdemo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.terryliu.springbootmockdemo.mapper.UserBase;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 /**
  * Copyright (C), 2022 ~ 2023, NyquistAi.inc
@@ -22,4 +20,6 @@ public interface UserBaseMapper extends BaseMapper<UserBase> {
     UserBase selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(UserBase record);
+    
+    int saveOrUpdate(UserBase userBase);
 }

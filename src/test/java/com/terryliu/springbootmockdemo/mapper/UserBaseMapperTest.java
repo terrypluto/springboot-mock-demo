@@ -65,4 +65,10 @@ public class UserBaseMapperTest extends SpringbootMockDemoApplicationTests {
             sqlSession.close();
         }
     }
+    
+    @Test
+    void test2(){
+        UserBase userBase = userBaseMapper.selectById(1);
+        System.out.println(userBase);
+    }
 }

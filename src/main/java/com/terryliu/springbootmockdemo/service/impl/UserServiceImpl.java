@@ -1,5 +1,6 @@
 package com.terryliu.springbootmockdemo.service.impl;
 
+import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.terryliu.springbootmockdemo.annotation.UserLog;
 import com.terryliu.springbootmockdemo.mapper.UserBase;
@@ -20,6 +21,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.List;
 import java.util.random.RandomGenerator;
 
@@ -86,5 +88,14 @@ public class UserServiceImpl extends ServiceImpl<UserBaseMapper, UserBase> imple
         response.setHeader(HttpHeaders.CACHE_CONTROL, "no-cache");
         response.setHeader(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, HttpHeaders.CONTENT_DISPOSITION);
         response.setDateHeader(HttpHeaders.EXPIRES, 0);
+    }
+    
+    @Transactional
+    @Override
+    public void batchSaveOrUpdate(List<UserBase> userBases) {
+        String sqlStatement = mapperClass.getName() + StringPool.DOT + "saveOrUpdate";
+        executeBatch(userBases,(sqlSession, entity) -> {
+            sqlSession.update(sqlStatement, entity);
+        });
     }
 }

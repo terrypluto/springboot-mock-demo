@@ -48,4 +48,18 @@ public class UserServiceTest extends SpringbootMockDemoApplicationTests {
         }
         userService.batch(userBases);
     }
+    
+    @Test
+    public void test2(){
+        List<UserBase> userBases = new ArrayList<>();
+        for (int i = 1; i < 10; i++) {
+            UserBase userBase = new UserBase()
+                    .setId(i)
+                    .setGender("男")
+                    .setUsername("test"+i)
+                    .setState((short) 0);
+            userBases.add(userBase);
+        }
+        userService.batchSaveOrUpdate(userBases);
+    }
 }

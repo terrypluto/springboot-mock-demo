@@ -67,4 +67,45 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="saveOrUpdate" resultType="int">
+    insert into user_base
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      id,
+      <if test="username != null">
+        username,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="state != null">
+        "state",
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      #{id,jdbcType=INTEGER},
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=SMALLINT},
+      </if>
+    </trim>
+    on CONFLICT(id) DO UPDATE
+    <set>
+      <if test="username != null">
+        username = EXCLUDED.username,
+      </if>
+      <if test="gender != null">
+        gender = EXCLUDED.gender,
+      </if>
+      <if test="state != null">
+        "state" = EXCLUDED.state,
+      </if>
+    </set>
+
+  </select>
 </mapper>

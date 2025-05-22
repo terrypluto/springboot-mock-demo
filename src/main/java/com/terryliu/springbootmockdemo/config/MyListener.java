@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @version 1.0.0
  * @since 2024/6/3
  */
-@Component
+//@Component
 public class MyListener implements ApplicationListener<RedisAsyncEvent> {
     private final RedisTemplate<String, String> redisTemplate;
     private final UserBaseMapper userBaseMapper;

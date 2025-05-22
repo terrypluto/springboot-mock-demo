@@ -7,6 +7,7 @@ import org.springframework.boot.info.OsInfo;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @SpringBootTest
@@ -28,6 +29,11 @@ public class SpringbootMockDemoApplicationTests {
 
     @Test
     void contextLoads() {
+    }
+    
+    public static void main(String[] args) {
+        int dayValue = LocalDate.now().getDayOfWeek().getValue();
+        System.out.println(dayValue);
     }
 
 }

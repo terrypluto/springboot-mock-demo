@@ -1,34 +1,39 @@
 package com.terryliu.springbootmockdemo.mapper;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 /**
- * Copyright (C), 2022 ~ 2023, NyquistAi.inc
- * todo
- * 
- * @author Nyquist Data Tech Team
+ * description
+ *
+ * @author Terry.Liu
  * @version 1.0.0
- * @since  2024/4/19
+ * @since 2025/5/9
  */
+
 @Data
-@TableName("user_base")
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
+@TableName(value = "user_base", autoResultMap = true)
 public class UserBase {
-    @TableId(type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.INPUT)
     private Integer id;
-
+    
+    @TableField(value = "username")
     private String username;
-
+    
+    @TableField(value = "gender")
     private String gender;
-
-    private Short state;
+    
+    @TableField(value = "\"state\"")
+    private Object state;
+    
+    @TableField(value = "information",typeHandler = JsonToListTypeHandler.class)
+    private List<Information> information;
 }

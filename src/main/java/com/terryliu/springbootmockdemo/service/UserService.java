@@ -22,4 +22,6 @@ public interface UserService  {
 
 
     void batch(List<UserBase> userBases);
+    
+    void batchSaveOrUpdate(List<UserBase> userBases);
 }

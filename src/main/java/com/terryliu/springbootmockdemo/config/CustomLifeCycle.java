@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @version 1.0.0
  * @since 2024/6/4
  */
-@Component
+//@Component
 public class CustomLifeCycle implements SmartLifecycle {
     private final ApplicationContext applicationContext;
     public CustomLifeCycle(ApplicationContext applicationContext) {
